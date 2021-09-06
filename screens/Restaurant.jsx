@@ -143,7 +143,7 @@ const Restaurant = ({route, navigation}) => {
               style={{
                 width: SIZES.width,
                 alignItems: 'center',
-                marginTop: 15,
+                marginTop: 25,
                 paddingHorizontal: SIZES.padding * 2,
               }}
             >
@@ -179,7 +179,7 @@ const Restaurant = ({route, navigation}) => {
     const dotPosition = Animated.divide(scrollX, SIZES.width);
 
     return (
-      <View style={{height: 30}}>
+      <View style={{height: 50}}>
         <View
           style={{
             flexDirection: 'row',
@@ -208,17 +208,19 @@ const Restaurant = ({route, navigation}) => {
             });
 
             return (
-              <Animated.View
-                key={`dot-${index}`}
-                opacity={opacity}
-                style={{
-                  borderRadius: SIZES.radius,
-                  marginHorizontal: 6,
-                  width: dotSize,
-                  height: dotSize,
-                  color: dotColor,
-                }}
-              />
+              <>
+                <Animated.View
+                  key={`dot-${index}`}
+                  opacity={opacity}
+                  style={{
+                    borderRadius: SIZES.radius,
+                    marginHorizontal: 6,
+                    width: dotSize,
+                    height: dotSize,
+                    backgroundColor: dotColor,
+                  }}
+                />
+              </>
             );
           })}
         </View>
@@ -227,7 +229,61 @@ const Restaurant = ({route, navigation}) => {
   };
 
   const renderOrder = () => {
-    return <View>{renderDots()}</View>;
+    return (
+      <View>
+        {renderDots()}
+        <View
+          style={{
+            backgroundColor: COLORS.white,
+            borderTopLeftRadius: 40,
+            borderTopRightRadius: 40,
+          }}
+        >
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingVertical: SIZES.padding * 2,
+              paddingHorizontal: SIZES.padding * 3,
+              borderBottomColor: COLORS.lightGray2,
+              borderBottomWidth: 1,
+            }}
+          >
+            <Text style={{...FONTS.h3}}>items in Card</Text>
+            <Text style={{...FONTS.h3}}>$45</Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingVertical: SIZES.padding * 2,
+              paddingHorizontal: SIZES.padding * 3,
+            }}
+          >
+            <View style={{flexDirection: 'row'}}>
+              <Image
+                source={icons.pin}
+                resizeMode="contain"
+                style={{width: 20, height: 20, tintColor: COLORS.darkgray}}
+              />
+              <Text style={{marginLeft: SIZES.padding, ...FONTS.h4}}>
+                Location
+              </Text>
+            </View>
+            <View style={{flexDirection: 'row'}}>
+              <Image
+                source={icons.master_card}
+                resizeMode="contain"
+                style={{width: 20, height: 20, tintColor: COLORS.darkgray}}
+              />
+              <Text style={{marginLeft: SIZES.padding, ...FONTS.h4}}>
+                ...8888
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    );
   };
 
   return (
