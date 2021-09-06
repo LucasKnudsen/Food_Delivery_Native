@@ -1,5 +1,5 @@
 import {icons, images} from '../constants';
-
+console.log(images.avatar_1);
 // price rating
 const affordable = 1;
 const fairPrice = 2;
